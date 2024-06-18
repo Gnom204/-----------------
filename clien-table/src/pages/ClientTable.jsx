@@ -5,10 +5,10 @@ import { createClient } from "../utils/api";
 
 function ClientTable() {
   const [testAdded, setTestAdded] = React.useState(false);
-
+  const randomstring = require("randomstring");
   const clickHandler = () => {
     createClient(
-      "12213145234234967",
+      randomstring.generate(14),
       "Иванов",
       "Иван",
       "Иванович",
@@ -31,7 +31,7 @@ function ClientTable() {
       <button onClick={logout} className="text-white underline">
         Выйти
       </button>
-      <ClientDataTable testAdded={testAdded} />
+      <ClientDataTable setTestAdded={setTestAdded} testAdded={testAdded} />
       <button
         className="text-white break-words w-96 bg-blue-600 rounded-2xl p-2 mt-10"
         onClick={clickHandler}

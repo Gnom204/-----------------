@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { getAllClients } from "../utils/api";
 import ClientData from "./ClientData";
 
-function ClientDataTable({ testAdded }) {
+function ClientDataTable({ testAdded, setTestAdded }) {
   const [clients, setClients] = React.useState([]);
   const [isChoice, setIsChoice] = React.useState(false);
+  const [statusValue, setStatusValue] = React.useState("");
 
   const getClients = () => {
     getAllClients()
@@ -19,10 +20,7 @@ function ClientDataTable({ testAdded }) {
 
   useEffect(() => {
     getClients();
-  }, [isChoice]);
-
-  useEffect(() => {
-    getClients();
+    setTestAdded(false);
   }, [testAdded]);
 
   return (

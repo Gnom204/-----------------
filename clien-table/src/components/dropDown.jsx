@@ -1,8 +1,9 @@
 import React from "react";
 import { updateStatus } from "../utils/api";
 
-function dropDown({ clientId, setIsChoice, setIsClick }) {
+function dropDown({ clientId, setIsChoice, setIsClick, setStatus }) {
   const changeHandler = (e) => {
+    setStatus(e.target.value);
     updateStatus(clientId, e.target.value)
       .then((res) => {
         console.log(res);

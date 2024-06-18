@@ -4,7 +4,7 @@ import DropDown from "./dropDown";
 function ClientData({ client, setChoice }) {
   const [isClick, setIsClick] = React.useState(true);
   const [isChoice, setIsChoice] = React.useState(false);
-
+  const [status, setStatus] = React.useState(client.status);
   const clickHandler = () => {
     if (isClick) {
       setIsClick(false);
@@ -29,9 +29,10 @@ function ClientData({ client, setChoice }) {
       <td className="w-24 break-words">{client.INN}</td>
       <td onClick={clickHandler} className="w-24 break-words cursor-pointer">
         {isClick ? (
-          client.status
+          status
         ) : (
           <DropDown
+            setStatus={setStatus}
             setIsChoice={setIsChoice}
             setIsClick={setIsClick}
             clientId={client._id}

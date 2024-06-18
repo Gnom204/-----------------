@@ -38,7 +38,7 @@ export const login = (req, res) => {
         .compare(password, user.password)
         .then((result) => {
           if (!result) {
-            res.json({ message: "Неправильный логин или пароль" });
+            res.status(400).json({ message: "Неправильный логин или пароль" });
           } else {
             const token = jwt.sign(
               {
